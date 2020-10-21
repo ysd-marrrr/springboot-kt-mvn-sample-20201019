@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>アイテムリスト</title>
+</head>
+<body>
+<h1 th:text="'アイテムリスト: ' + ${itemType}"></h1>
+<ul style="list-style: none;">
+    <li th:each="item : ${typeData}" th:inline="text" style="display: inline-block;">
+        <a th:href="@{'/items/?itemType=' + ${item.type}}">[[${item.type}]]</a>
+    </li>
+</ul>
+<hr />
+<ul>
+    <li th:each="item : ${itemData}" th:inline="text">
+        No.<a th:href="@{'/items/' + ${item.id}}">[[${item.id}]]</a>
+        [[${item.name}]]:
+        [[${#dates.format(item.created_at,'yyyy/MM/dd hh:mm:ss')}]]入荷
+    </li>
+</ul>
+</body>
+</html>

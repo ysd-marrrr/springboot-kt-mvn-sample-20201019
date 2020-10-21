@@ -3,6 +3,7 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
+    initialization–mode: always
     url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:13306}/${MYSQL_DB:sample_db}
     username: ${MYSQL_USER:sample_user}
-    password: ${MYSQL_PASS:sample_password}
+    password: ${MYSQL_PASS:sample_pass}
