@@ -1,6 +1,7 @@
 package dev.ymix.springbootsamplemaven.mapper
 
 import dev.ymix.springbootsamplemaven.domain.Item
+import dev.ymix.springbootsamplemaven.domain.ItemType
 import org.apache.ibatis.annotations.Mapper
 import org.apache.ibatis.annotations.Select
 
@@ -17,7 +18,7 @@ interface ItemMapper {
         SELECT DISTINCT(type)
         FROM items
     """)
-    fun selectTypes(): List<Item>
+    fun selectTypes(): List<ItemType>
 
     @Select("""
         SELECT id, name, type, created_at

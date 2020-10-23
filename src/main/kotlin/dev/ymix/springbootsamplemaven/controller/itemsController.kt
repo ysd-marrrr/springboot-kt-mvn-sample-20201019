@@ -1,6 +1,7 @@
 package dev.ymix.springbootsamplemaven.controller
 
 import dev.ymix.springbootsamplemaven.domain.Item
+import dev.ymix.springbootsamplemaven.domain.ItemType
 import dev.ymix.springbootsamplemaven.mapper.ItemMapper
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -16,7 +17,7 @@ class ItemsController(private val itemMapper: ItemMapper) {
     @GetMapping("/")
     fun listByType(@RequestParam itemType: String, model: Model) :String {
         val itemData: List<Item> = itemMapper.selectItemsByType(itemType)
-        val typeData: List<Item> = itemMapper.selectTypes()
+        val typeData: List<ItemType> = itemMapper.selectTypes()
 
         model.addAttribute("itemType", itemType)
         model.addAttribute("itemData", itemData)
@@ -29,7 +30,6 @@ class ItemsController(private val itemMapper: ItemMapper) {
         val itemData: Item = itemMapper.selectItem(id)
 
         model.addAttribute("itemData", itemData)
-        println(itemData)
         return "items"
     }
 }
